@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>repl.it</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	 crossorigin="anonymous">
+	<link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+	  <div class="container pt-5">
+      <form autocomplete="off">
+        <div class="form-floating mb-3">
+        <input  type="text" class="form-control" id="codeInput"  placeholder="name@example.com">
+        <label for="floatingInput">Your Morse Code *spasi untuk memisahkan kode</label>
+      </div>
+      </form>
+      <div class="d-flex justify-content-start" id="history"></div>
+      <div class="d-flex justify-content-start" id="codeResult"></div>
+      <div class="row justify-content-center">
+        <div class="col-4">
+          <button class="btn btn-primary" id="translateButton">Translate</button>
+        </div>
+        <div class="col-4">
+          <button class="btn btn-secondary" id="resetButton">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
