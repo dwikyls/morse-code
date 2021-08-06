@@ -6,7 +6,7 @@ const resetButton = document.getElementById("resetButton");
 
 async function getMorseCode() {
   try {
-    const response = await fetch("https://github.com/dwikyls/morse-code/blob/main/morse.json");
+    const response = await fetch("morse.json");
     return await response.json();
   } catch (e) {
     console.log(e);
