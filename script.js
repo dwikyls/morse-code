@@ -13,41 +13,60 @@ async function getMorseCode() {
   }
 }
 
-input.addEventListener("keyup", function (event) {
-  if (event.keyCode === 32) {
-    event.preventDefault();
+async function realTimeTranslate() {
+  const morseCode = await getMorseCode();
+  let morsePattern = /^[.-]{1,5}(?:[ \t]+[.-]{1,5})*(?:[ \t]+[.-]{1,5}(?:[ \t]+[.-]{1,5})*)*$/;
 
-    document.getElementById("translateButton").click();
-  }
 
-  if (event.keyCode === 188) {
-    event.preventDefault();
+  input.addEventListener('input', (e) => {
+    if (input.value == "") return result.innerHTML = "";
 
-    document.getElementById("translateButton").click();
-  }
+    setTimeout(() => {
+      let codeToArray = input.value.split(" ");
 
-});
+      codeToArray.forEach((codeString) => {
+        if (codeString.match(morsePattern) != null) {
+          Object.keys(morseCode).forEach(function (key) {
+            if (morseCode[key] == codeString) {
+              result.innerHTML += `${key}`;
+            }
+          });
+        }
+      });
+    }, 1000);
+  }, false);
+}
 
 async function translate() {
   const morseCode = await getMorseCode();
 
   translateButton.addEventListener("click", async function (event) {
-    let code = input.value.replace(",", "").replace(' ', "");
+    // .--/.-/.-./-./---/-./--.
+    // let code = input.value;
+    let codeToArray = input.value.split("//");
 
-    Object.keys(morseCode).forEach(function (key) {
-      if (morseCode[key] == `${code}`) {
-        history.innerHTML += `${code} `;
-        result.innerHTML += `${key}`;
-      }
+    // console.log(codeToArray.length, codeToArray);
+
+    codeToArray.forEach((codeString) => {
+      codeString.split("/").forEach((code) => {
+        Object.keys(morseCode).forEach(function (key) {
+          if (morseCode[key] == code) {
+            result.innerHTML += `${key}`;
+          }
+        });
+      });
+      result.innerHTML += ` `;
     });
+    history.innerHTML += `${input.value}`;
 
     input.value = "";
   });
-
-  resetButton.addEventListener("click", () => {
-    history.innerHTML = "";
-    result.innerHTML = "";
-  })
 }
 
+resetButton.addEventListener("click", () => {
+  history.innerHTML = "";
+  result.innerHTML = "";
+})
+
 translate();
+// realTimeTranslate();

@@ -10,23 +10,21 @@
 </head>
 
 <body>
-	  <div class="container pt-5">
-      <form autocomplete="off">
-        <div class="form-floating mb-3">
-        <input  type="text" class="form-control" id="codeInput"  placeholder="name@example.com">
-        <label for="floatingInput">Your Morse Code *spasi untuk memisahkan kode</label>
-      </div>
-      </form>
+  <div class="container mt-5">
+		<div class="row justify-content-center">
+			<div class="col-9">
+				<div class="form-floating mb-3">
+					<textarea  type="text" class="form-control" id="codeInput"  placeholder="name@example.com"></textarea>
+              <label for="floatingInput">Your Morse Code</label>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="row"><button class="btn btn-primary" id="translateButton">Translate</button></div>
+            <div class="row mt-2"><button class="btn btn-secondary" id="resetButton">Reset</button></div>            
+          </div>
+        </div>
       <div class="d-flex justify-content-start" id="history"></div>
-      <div class="d-flex justify-content-start" id="codeResult"></div>
-      <div class="row justify-content-center">
-        <div class="col-4">
-          <button class="btn btn-primary" id="translateButton">Translate</button>
-        </div>
-        <div class="col-4">
-          <button class="btn btn-secondary" id="resetButton">Reset</button>
-        </div>
-      </div>
+      <div class="d-flex justify-content-start" id="codeResult"></div>      
     </div>
 
     <script src="script.js"></script>
